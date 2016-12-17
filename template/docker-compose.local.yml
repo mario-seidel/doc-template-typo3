@@ -33,7 +33,7 @@ services:
         environment:
             DMK_APP_ENV: 'LOCAL'
             VIRTUAL_HOST: ###projectname###.local
-            VIRTUAL_PORT: 8085
+            VIRTUAL_PORT: 8084
             HOST_USER: '###hostuser###'
             HOST_USER_ID: '###hostuserid###'
             HOST_GROUP: '###hostgroup###'

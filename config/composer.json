@@ -3,7 +3,7 @@
         { "type": "composer", "url": "https://composer.typo3.org/" }
     ],
     "require": {
-        "typo3/cms": "^8.0"
+        "typo3/cms": "^7.0"
     },
     "extra" : {
         "typo3/cms" : {

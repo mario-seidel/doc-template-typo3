@@ -4,7 +4,7 @@
 source "$DOC_SETTINGS"
 
 GIT_REPO="$1"
-DOC_TYPO3_VERSION=${2:-8}
+DOC_TYPO3_VERSION=${2:-7}
 DOC_DOCKERFILE_TYPO3="./dockerfiles/Dockerfile-typo3"
 
 docker inspect "$DOC_USERNAME"/typo3base:"$DOC_TYPO3_VERSION" &> /dev/null

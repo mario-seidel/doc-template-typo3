@@ -1,4 +1,4 @@
-FROM ###username###/typo3base:8
+FROM ###username###/typo3base:7
 
 ARG github_oauth
 ARG hostuser
