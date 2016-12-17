@@ -1,4 +1,4 @@
-# Template zur Erzeugung einer Docker Umgebung mit TYPO3 8 CMS
+# Template zur Erzeugung einer Docker Umgebung mit TYPO3 7 CMS
 
 **Requirements:**
 
