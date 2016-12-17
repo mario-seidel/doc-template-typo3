@@ -1,0 +1,20 @@
+version: '2'
+services:
+    web:
+        build:
+            context: .
+            dockerfile: dockerfiles/Dockerfile-prod
+        container_name: ###projectname###_web_prod
+        volumes:
+            - /var/www/html/typo3conf
+            - fileadmin:/var/www/html/htdocs/fileadmin
+            - typo3conf:/var/www/html/htdocs/typo3conf
+            - typo3temp:/var/www/html/htdocs/typo3temp
+            - uploads:/var/www/html/htdocs/uploads
+        environment:
+            DMK_APP_ENV: 'PRODUCTION'
+volumes:
+  fileadmin: {}
+  typo3conf: {}
+  typo3temp: {}
+  uploads: {}

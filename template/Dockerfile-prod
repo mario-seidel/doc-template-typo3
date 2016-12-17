@@ -1,0 +1,14 @@
+FROM ###username###/typo3base:8
+
+#USER www-data
+
+COPY ./sources /var/www/html/
+COPY ./scripts/entrypoint.sh /
+
+WORKDIR /var/www/html
+
+#run composer to build new TYPO3 project
+RUN composer.phar update --prefer-stable --prefer-source -o --no-dev
+
+RUN [ -f .htaccess_prod ] && mv .htaccess_prod .htaccess; chown -R www-data:www-data /var/www/html
+CMD ["/entrypoint.sh"]

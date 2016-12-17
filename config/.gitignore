@@ -1,0 +1,22 @@
+!.gitignore
+!.gitkeep
+!index.html
+
+### eclipse files
+/.buildpath
+/.project
+/.settings
+
+### netbeans files
+/nbproject/
+
+### mac os x files
+*.DS_Store
+.idea
+
+### serverfiles
+/.bash_history
+/.ssh
+/.viminfo
+
+/vendor

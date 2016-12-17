@@ -1,0 +1,17 @@
+FROM ###username###/typo3base:8
+
+ARG github_oauth
+ARG hostuser
+ARG hostuserid
+ARG hostgroup
+ARG hostgroupid
+
+COPY ./sources /var/www/html
+COPY ./scripts/entrypoint.sh /
+
+WORKDIR /var/www/html
+
+#set oauth token for github
+RUN composer.phar config -g github-oauth.github.com $github_oauth;
+
+CMD ["/entrypoint.sh"]

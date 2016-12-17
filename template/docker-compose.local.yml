@@ -1,0 +1,44 @@
+version: '2'
+services:
+#this should run in a dedicated container -->
+    nginx:
+        image: nginx
+        container_name: nginx
+        ports:
+          - "80:80"
+        volumes:
+          - /etc/nginx/conf.d
+          - ./config/certs:/etc/nginx/certs
+    dockergen:
+        image: jwilder/docker-gen
+        command: -notify-sighup nginx -watch /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+        volumes_from:
+          - nginx
+        volumes:
+          - /var/run/docker.sock:/tmp/docker.sock:ro
+          - ./config/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl
+#this should run in a dedicated container <--
+
+    web:
+        build:
+            context: .
+            dockerfile: dockerfiles/Dockerfile-install
+            args:
+                github_oauth: ###github_oauth###
+        container_name: ###projectname###_web_local
+        volumes:
+            - ./sources:/var/www/html/
+            - ./config/php.ini:/usr/local/etc/php/php.ini:ro
+            - ./config/apache-vhost.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+        environment:
+            DMK_APP_ENV: 'LOCAL'
+            VIRTUAL_HOST: ###projectname###.local
+            VIRTUAL_PORT: 8085
+            HOST_USER: '###hostuser###'
+            HOST_USER_ID: '###hostuserid###'
+            HOST_GROUP: '###hostgroup###'
+            HOST_GROUP_ID: '###hostgroupid###'
+networks:
+  default:
+    external:
+      name: docker_default

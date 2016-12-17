@@ -1,0 +1,13 @@
+*~
+
+.idea
+/sources/*
+!/sources/.gitkeep
+
+/docker-compose*.yml
+
+/config/settings.sh
+/config/apache-vhost.conf
+
+/dockerfiles/*
+!/dockerfiles/.gitkeep
